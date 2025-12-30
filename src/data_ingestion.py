@@ -2,11 +2,10 @@
 #future sources like APIs/DBs)
 
 import pandas as pd
+from pathlib import Path
 
-def load_raw_data(path: str) -> pd.DataFrame:
-    df = pd.read_csv(path)
-    df.drop(columns=['customer_id', 'gender', 'country'], inplace=True)
-
-    if 'Exited' not in df.columns:
-        raise ValueError("Target column 'Exited' not found")
-    return df
+def load_engineered_data(file_path: str | Path) -> pd.DataFrame:
+    """
+    Load engineered churn dataset from CSV.
+    """
+    return pd.read_csv(file_path)
